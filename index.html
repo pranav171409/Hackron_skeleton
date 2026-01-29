@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nyash | Futuristic AI Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBVtNhUK85kGFbbhEUKGGJRKdzlw7EIYfo",
+  authDomain: "aiagentsnovaforge.firebaseapp.com",
+  projectId: "aiagentsnovaforge",
+  appId: "1:509850862618:web:833955f9d4233010dafda3"
+};
+firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+  // Listen to Auth State
+  firebase.auth().onAuthStateChanged(user => {
+    const loginBtn = document.getElementById("login-btn");
+
+    if (user) {
+      // User Logged In
+      loginBtn.textContent = "Logout";
+      loginBtn.onclick = async () => {
+        await firebase.auth().signOut();
+        window.location.reload();
+      };
+    } else {
+      // User Logged Out
+      loginBtn.textContent = "Login";
+      loginBtn.onclick = () => window.location.href = "auth.html";
+    }
+  });
+</script>
+
+</head>
+<body>
+
+<header>
+  <div class="logo">NYASH</div>
+  <nav id="nav-menu">
+    <a href="#modules">Modules</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#about">About</a>
+    <a href="#vision">Vision</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button id="login-btn" >Login</button>
+    <div id="menu-toggle">☰</div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Nyash AI</h1>
+  <h2 class="sub">Futuristic Multi-Agent System for Productivity & Automation</h2>
+  <p>Empowering users with task automation, research augmentation, and intelligence processing.</p>
+  <button class="cta-primary" id="hero-login">Get Started</button>
+</section>
+
+<section id="agents-library" class="section">
+  <h2>AI Agents Library</h2>
+  <p>Explore and select from our collection of AI agents to run tasks, automate workflows, analyze data, and more. Choose an agent and start leveraging AI for your project.</p>
+  <button id="explore-agents-btn" onclick="location.href='agents.html'">Explore Agents</button>
+</section>
+
+
+<section id="capabilities" class="section dark">
+  <h2>Core Capabilities</h2>
+  <div class="cap-grid">
+    <div>Autonomous Planning</div>
+    <div>Parallel Agents</div>
+    <div>Document Understanding</div>
+    <div>Vision Processing</div>
+    <div>Script Execution</div>
+    <div>Private On-Device Processing</div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <h2>About the Project</h2>
+  <p>
+    Nyash is a multi-agent AI platform engineered for scalable task automation,
+    autonomous research, and digital intelligence. It leverages structured agent
+    communication and modular execution pipelines to achieve higher operational throughput.
+  </p>
+</section>
+
+<section id="vision" class="section dark">
+  <h2>Our Vision</h2>
+  <p>
+    Our mission is to build a powerful yet responsible AI ecosystem that
+    democratizes access to autonomous digital assistance. Our roadmap includes
+    localized intelligence, on-device agents, and next-gen decision-making models.
+  </p>
+</section>
+
+<section id="team" class="section">
+  <h2>Meet The Team</h2>
+
+  <!-- Leader -->
+  <div class="team-leader">
+    <div class="member leader">
+      Avadhoot Joshi
+      <span>Team Leader · AI/ML Developer</span>
+    </div>
+  </div>
+
+  <!-- Team Members -->
+  <div class="team-grid">
+    <div class="member">
+      Kartik Nareshrao Yamsanwar
+      <span>Full Stack Developer</span>
+    </div>
+
+    <div class="member">
+      Pranav Kore
+      <span>Frontend Developer</span>
+    </div>
+
+    <div class="member">
+      Girish Bhonde
+      <span>Cloud Infrastructure Developer</span>
+    </div>
+
+    <div class="member">
+      Atharva Shinde
+      <span>AI Systems Developer</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" class="section">
+  <h2>Get In Touch</h2>
+
+  <form id="contact-form" action="https://formspree.io/f/xbdyjapq" method="POST">
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Your Email" 
+      required
+    />
+
+    <textarea 
+      name="message" 
+      placeholder="Your Message" 
+      required
+    ></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p id="form-status" class="form-status"></p>
+</section>
+<script>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (response.ok) {
+        status.textContent = "✅ Message sent successfully!";
+        status.className = "form-status success";
+        form.reset();
+      } else {
+        status.textContent = "❌ Something went wrong. Please try again.";
+        status.className = "form-status error";
+      }
+    } catch (error) {
+      status.textContent = "❌ Network error. Please try later.";
+      status.className = "form-status error";
+    }
+  });
+</script>
+
+<footer>
+  <div class="foot-title">Nyash</div>
+  <p>Multi-Agent AI platform for automation & productivity.</p>
+  <p>© 2025 Nyash — Powered by AI</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

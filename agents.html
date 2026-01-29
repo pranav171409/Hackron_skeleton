@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nyash | AI Agents Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/agents.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">NYASH</div>
+  <nav id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="#agents-section">Agents</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+
+    <div id="menu-toggle">☰</div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>AI Agents Dashboard</h1>
+  <p>Select an AI agent below and run tasks instantly.</p>
+</section>
+
+<section class="agents-section" id="agents-section">
+  <div class="agents-cards">
+
+    <!-- Agent 1 -->
+    <div class="agent-card">
+      <h3>Research Intelligence Agent</h3>
+      <p>
+        An advanced AI agent designed to research, analyze, and summarize
+        information across multiple domains with high accuracy.
+      </p>
+      <button 
+        class="run-agent-btn"
+        onclick="window.location.href='ai_agent1.html'">
+        Open Agent
+      </button>
+    </div>
+
+    <!-- Agent 2 -->
+    <div class="agent-card">
+      <h3>Workflow Automation Agent</h3>
+      <p>
+        Automates complex workflows, task execution, and multi-step processes
+        to improve productivity and efficiency.
+      </p>
+      <button 
+        class="run-agent-btn"
+        onclick="window.location.href='ai_agent2.html'">
+        Open Agent
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="foot-title">Nyash</div>
+  <p>Multi-Agent AI platform for automation & productivity.</p>
+  <p>© 2025 Nyash — Powered by AI</p>
+</footer>
+
+<script src="js/agents.js"></script>
+<script src="js/agents-cards.js"></script>
+</body>
+</html>
